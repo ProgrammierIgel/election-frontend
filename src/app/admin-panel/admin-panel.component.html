@@ -1,0 +1,43 @@
+<div class="root">
+  <div id="activateVoting" class="card first_column first_row">
+    <p id="activateVoting_status" class="first_column first_row">
+      {{ this.status }}
+    </p>
+    <button
+      (click)="onActivateVoting()"
+      id="activateVoting_activateVoting"
+      class="button first_column second_row"
+    >
+      Voting aktivieren
+    </button>
+    <button
+      (click)="onDeactivateVoting()"
+      id="activateVoting_deactivateVoting"
+      class="button first_column third_row"
+    >
+      Voting deaktivieren
+    </button>
+  </div>
+
+  <div id="addNewVotables" class="card first_column second_row">
+    <form>
+      <input
+        class="input"
+        [(ngModel)]="votable"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <button class="button" (click)="onAddNewVotable()">Speichern</button>
+    </form>
+  </div>
+
+  <div id="deleteAllEntries" class="card second_column first_row">
+    <form>
+      <button (click)="onDeleteAll()" class="button">Alles löschen</button>
+    </form>
+  </div>
+  <div id="logout" class="card second_column second_row">
+    <form>
+      <button (click)="onLogout()" class="button">Logout</button>
+    </form>
+  </div>
+</div>

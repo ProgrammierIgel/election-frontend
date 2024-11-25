@@ -1,0 +1,67 @@
+.card{
+  background-color: white;
+  border-radius: 30%;
+  border-color: black;
+  border-style: solid;
+  border: 10px;
+  display: flex;
+  width: 400px;
+  height:400px;
+  padding: 20px;
+  box-shadow: 5px 5px 5px rgb(197, 197, 197);
+  display: grid;
+  gap:10px
+}
+
+.root{
+  display: grid;
+  gap: 50px
+
+}
+
+.button{
+  width: 75px;
+  height: 50px;
+  margin: 20px;
+  color: white;
+  padding: 5px;
+  background-color: rgb(124, 124, 124);
+  border:0px;
+}
+
+.first_column{
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.first_row{
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+
+.second_column{
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.second_row{
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.third_column{
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
+.third_row{
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+
+.input{
+  width: 100px;
+  height: 40px;
+
+}

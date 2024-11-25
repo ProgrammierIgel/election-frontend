@@ -1,0 +1,14 @@
+<form id="form">
+  <input
+    placeholder="SECRET"
+    id="secret"
+    type="password"
+    [(ngModel)]="id"
+    [ngModelOptions]="{ standalone: true }"
+  />
+  <div *ngFor="let i of candidates">
+    <input name="candidates" type="radio" id="{{ i }}" value="{{ i }}" />{{ i }}
+  </div>
+  <button (click)="submit()">Senden</button>
+  <button (click)="this.routing.toShowVotes()">ToVoting</button>
+</form>
