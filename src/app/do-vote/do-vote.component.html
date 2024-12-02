@@ -1,14 +1,41 @@
-<form id="form">
-  <input
-    placeholder="SECRET"
-    id="secret"
-    type="password"
-    [(ngModel)]="id"
-    [ngModelOptions]="{ standalone: true }"
-  />
-  <div *ngFor="let i of candidates">
-    <input name="candidates" type="radio" id="{{ i }}" value="{{ i }}" />{{ i }}
+<div class="root">
+  <div class="card">
+    <h3>Do Vote</h3>
+    <form id="form">
+      <input
+        placeholder="Id"
+        id="secret"
+        type="password"
+        class="form-control"
+        [(ngModel)]="id"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <div class="input-group">
+        <div *ngFor="let i of candidates">
+          <div class="input-group-text">
+            <input
+              name="candidates"
+              type="radio"
+              class="form-check-input mt-0"
+              id="{{ i }}"
+              value="{{ i }}"
+            />
+            <p>
+              {{ i }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <button type="submit" (click)="submit()" class="btn btn-primary">
+        Senden
+      </button>
+      <button
+        type="button"
+        (click)="this.routing.toShowVotes()"
+        class="btn btn-secondary"
+      >
+        ToVoting
+      </button>
+    </form>
   </div>
-  <button (click)="submit()">Senden</button>
-  <button (click)="this.routing.toShowVotes()">ToVoting</button>
-</form>
+</div>

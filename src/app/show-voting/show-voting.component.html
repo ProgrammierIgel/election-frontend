@@ -1,7 +1,9 @@
-<div class="card">
-  <div *ngFor="let k of voting | keyvalue" class="for">
-    <div>{{ k.key }}</div>
-    <div>{{ k.value }}</div>
-
+<div class="root">
+  <div class="card">
+    <h3>Current Voting</h3>
+    <div *ngFor="let k of voting | keyvalue" class="for">
+      <div class="center">{{ k.key }}</div>
+      <div class="center">{{ k.value }}</div>
+    </div>
   </div>
 </div>

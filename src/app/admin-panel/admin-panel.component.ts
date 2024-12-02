@@ -12,6 +12,14 @@ import { RoutingService } from '../services/routing/routing.service';
   styleUrl: './admin-panel.component.scss'
 })
 export class AdminPanelComponent implements OnInit {
+onShowElection() {
+  this.routerService.toShowVotes()
+  return
+}
+onElection() {
+  this.routerService.tovoting()
+  return
+}
 
   status: boolean
   votable = ''

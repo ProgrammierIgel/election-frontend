@@ -37,6 +37,11 @@ export class DoVoteComponent implements OnInit {
     if (this.id == '') {
       return
     }
+
+    if (!(await this.connect.isVotingActive())["statusVoting"]){
+      alert("No Voting active")
+      return
+    }
     for (let i of this.candidates) {
     	  if(document.forms[0][i].checked){
           try{

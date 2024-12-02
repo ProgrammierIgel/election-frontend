@@ -1,43 +1,60 @@
 <div class="root">
-  <div id="activateVoting" class="card first_column first_row">
+  <div id="activateVoting" class="card">
+    <h3>Status</h3>
     <p id="activateVoting_status" class="first_column first_row">
       {{ this.status }}
     </p>
     <button
       (click)="onActivateVoting()"
       id="activateVoting_activateVoting"
-      class="button first_column second_row"
+      class="btn btn-primary"
     >
       Voting aktivieren
     </button>
     <button
       (click)="onDeactivateVoting()"
       id="activateVoting_deactivateVoting"
-      class="button first_column third_row"
+      class="btn btn-primary"
     >
       Voting deaktivieren
     </button>
   </div>
 
-  <div id="addNewVotables" class="card first_column second_row">
+  <div id="addNewVotables" class="card">
+    <h3>Insert Votable ID's</h3>
     <form>
       <input
-        class="input"
+        class="form-control"
+        placeholder="New ID"
         [(ngModel)]="votable"
         [ngModelOptions]="{ standalone: true }"
       />
-      <button class="button" (click)="onAddNewVotable()">Speichern</button>
+      <button type="button" class="btn btn-success" (click)="onAddNewVotable()">
+        Speichern
+      </button>
     </form>
   </div>
 
-  <div id="deleteAllEntries" class="card second_column first_row">
+  <div id="deleteAllEntries" class="card">
+    <h3>Database Controll</h3>
     <form>
-      <button (click)="onDeleteAll()" class="button">Alles löschen</button>
+      <button (click)="onDeleteAll()" class="btn-danger btn">
+        Alles löschen
+      </button>
     </form>
   </div>
-  <div id="logout" class="card second_column second_row">
-    <form>
-      <button (click)="onLogout()" class="button">Logout</button>
+  <div id="logout" class="card">
+    <h3>Change Tab</h3>
+    <form class="routing">
+      <button (click)="onLogout()" class="routing-btn btn-danger btn">
+        Logout
+      </button>
+      <button (click)="onShowElection()" class="routing-btn btn-primary btn">
+        Zu den Ergebnissen
+      </button>
+      <button (click)="onElection()" class="routing-btn btn-info btn">
+        Selber abstimmen
+      </button>
     </form>
   </div>
 </div>

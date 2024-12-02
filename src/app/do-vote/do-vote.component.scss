@@ -1,0 +1,55 @@
+@font-face {
+  font-family: Nunito;
+  src: url(../../../public/fonts/Nunito/Nunito-VariableFont_wght.ttf);
+}
+
+.card{
+  background-color: aliceblue;
+  display: flex;
+  flex-wrap: wrap;
+  width : 30rem;
+  height: 35rem;
+  justify-content: space-around;
+  align-items: center;
+  border: rgb(211, 211, 211);
+  border-radius: 50px;
+  border-style: solid;
+  margin: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: 10px 5px #80808060;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.root{
+  margin: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+*{
+  margin: 5px;
+  font-family: Nunito;
+}
+
+p{
+  color: black;
+  font-size: 15px;
+}
+
+h3{
+  font-size: 30px;
+  font-weight:  500;
+}
+
+.input-group{
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-primary{
+  margin-right: 20px;
+}

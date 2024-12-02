@@ -1,11 +1,16 @@
-<div class="card">
-  <form>
-    <input
-    class="input"
-    [(ngModel)]="password"
-    [ngModelOptions]="{ standalone: true }"/>
-    <button (click)="check()">Login</button>
-    <div *ngIf="noPassword == true">No Passwort</div>
-    <div *ngIf="wrongPassword == true">Falsches Passwort</div>
-  </form>
+<div class="root">
+  <div class="card">
+    <h3>Login</h3>
+    <form>
+      <input
+        class="form-control"
+        placeholder="Passwort"
+        [(ngModel)]="password"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <button (click)="check()" class="btn-primary btn">Login</button>
+      <div *ngIf="noPassword == true" class="error">No Passwort</div>
+      <div *ngIf="wrongPassword == true" class="error">Falsches Passwort</div>
+    </form>
+  </div>
 </div>
