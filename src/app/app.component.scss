@@ -1,0 +1,22 @@
+@font-face {
+  font-family: Nunito;
+  src: url(/fonts/Nunito/Nunito-VariableFont_wght.ttf);
+}
+
+footer{
+  width: 100%;
+  height: auto;
+  min-height: 3rem;
+  max-height: 7rem;
+  background: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #6363636c;
+  padding: 20px;
+  flex: 0 0 auto;
+
+}
+

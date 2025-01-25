@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RoutingService } from './services/routing/routing.service';
-
-
+import { ConnectionService } from './services/connection/connection.service';
 
 @Component({
   selector: 'app-root',
@@ -15,10 +14,16 @@ import { RoutingService } from './services/routing/routing.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'election-frontend';
+  name = "";
 
-  constructor(private modalService: NgbModal, private router: RoutingService) {
+  constructor(private modalService: NgbModal, private router: RoutingService, private ConnectionService: ConnectionService) {
+  }
+
+  ngOnInit(): void {
+    this.updateName()
+    setInterval(this.updateName, 10_000)
   }
 
   public async open(modal: any): Promise<void> {
@@ -27,19 +32,22 @@ export class AppComponent {
 
   public async toLogin():Promise<void> {
     await this.router.toLogin()
-    document.location.reload()
     return
   }
 
   public async toShowVoting():Promise<void> {
     await this.router.toShowVotes()
-    document.location.reload()
     return
   }
 
   public async toMakeVote():Promise<void> {
     await this.router.tovoting();
-    document.location.reload()
     return
   }
+
+  public async updateName():Promise<void> {
+    this.name = (await this.ConnectionService.getName())["name"]
+    return
+  }
+
 }

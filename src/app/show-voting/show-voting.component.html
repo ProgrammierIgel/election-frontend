@@ -1,6 +1,7 @@
 <div class="root">
   <div class="card">
-    <h3>Current Voting</h3>
+    <h3>{{this.name}}</h3>
+    <p>Current Voting</p>
     <div *ngFor="let k of voting | keyvalue" class="for">
       <div class="center">{{ k.key }}</div>
       <div class="center">{{ k.value }}</div>

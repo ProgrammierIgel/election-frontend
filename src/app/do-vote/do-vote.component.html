@@ -1,6 +1,7 @@
 <div class="root">
   <div class="card">
-    <h3>Do Vote</h3>
+    <h3>{{ this.name }}</h3>
+    <p>Do Vote</p>
     <form id="form">
       <input
         placeholder="Id"
@@ -20,9 +21,9 @@
               id="{{ i }}"
               value="{{ i }}"
             />
-            <p>
+            <div>
               {{ i }}
-            </p>
+            </div>
           </div>
         </div>
       </div>

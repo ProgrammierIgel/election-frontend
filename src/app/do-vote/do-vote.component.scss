@@ -8,7 +8,8 @@
   display: flex;
   flex-wrap: wrap;
   width : 30rem;
-  height: 35rem;
+  height: auto;
+  min-height: 20rem;
   justify-content: space-around;
   align-items: center;
   border: rgb(211, 211, 211);
@@ -37,10 +38,17 @@
 
 p{
   color: black;
+  font-size: 20px;
+}
+
+div{
+  color: black;
   font-size: 15px;
 }
 
 h3{
+  padding: 25px;
+  padding-bottom: 5px;
   font-size: 30px;
   font-weight:  500;
 }

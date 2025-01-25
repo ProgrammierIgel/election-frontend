@@ -12,15 +12,18 @@ import { ConnectionService } from '../services/connection/connection.service';
 })
 export class ShowVotingComponent implements OnInit {
   voting: Record<string, number> = {};
+  name: string = "";
 
   constructor(public connection: ConnectionService) {  }
 
   ngOnInit(){
     this.syncronizeVoting()
+    this.updateName()
     setInterval(()=>{
       this.syncronizeVoting()
+      this.updateName()
 
-    }, 30_000)
+    }, 10_000)
   }
 
   async syncronizeVoting(): Promise<void>{
@@ -30,5 +33,9 @@ export class ShowVotingComponent implements OnInit {
     if (voting_local != this.voting){
       this.voting = voting_local
     }
+  }
+
+  async updateName(): Promise<void>{
+    this.name = (await this.connection.getName())["name"]
   }
 }

@@ -1,4 +1,27 @@
 <div class="root">
+  <div id="addNewVotables" class="card">
+    <h3>Change Name</h3>
+    <p>Aktueller Name:</p>
+    <p *ngIf="this.currentName !== ''">{{ this.currentName }}</p>
+    <p *ngIf="this.currentName === ''">Name noch nicht gesetzt</p>
+    <form>
+      <input
+        class="form-control"
+        placeholder="New Name"
+        [(ngModel)]="newName"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <button
+        class="btn btn-success"
+        type="submit"
+        (click)="setNewName()"
+        [disabled]="this.currentName == this.newName || this.newName == ''"
+      >
+        Aktualisieren
+      </button>
+    </form>
+  </div>
+
   <div id="activateVoting" class="card">
     <h3>Status</h3>
     <p id="activateVoting_status" class="first_column first_row">
@@ -8,6 +31,7 @@
       (click)="onActivateVoting()"
       id="activateVoting_activateVoting"
       class="btn btn-primary"
+      [disabled]="this.status"
     >
       Voting aktivieren
     </button>
@@ -15,6 +39,7 @@
       (click)="onDeactivateVoting()"
       id="activateVoting_deactivateVoting"
       class="btn btn-primary"
+      [disabled]="!this.status"
     >
       Voting deaktivieren
     </button>
@@ -25,21 +50,101 @@
     <form>
       <input
         class="form-control"
+        [disabled]="this.status"
         placeholder="New ID"
         [(ngModel)]="votable"
         [ngModelOptions]="{ standalone: true }"
       />
-      <button type="button" class="btn btn-success" (click)="onAddNewVotable()">
+      <button
+        class="btn btn-success"
+        type="submit"
+        (click)="onAddNewVotable()"
+        [disabled]="this.status"
+      >
         Speichern
       </button>
     </form>
   </div>
 
+  <div id="addNewCandidates" class="card">
+    <h3>Insert Candidates</h3>
+    <form>
+      <input
+        class="form-control"
+        placeholder="New Candidate"
+        [(ngModel)]="candidate"
+        [disabled]="this.status"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <button
+        type="button"
+        class="btn btn-success"
+        type="submit"
+        (click)="onAddNewCandidate()"
+        [disabled]="this.status"
+      >
+        Speichern
+      </button>
+    </form>
+  </div>
+
+  <div id="card-allIds" class="card">
+    <h3>All Undefined IDs</h3>
+    <p id="votingActive" class="errorMessage" *ngIf="this.status">
+      Deaktiviert während einer Abstimmung
+    </p>
+    <p
+      id="noVotes"
+      class="errorMessage"
+      *ngIf="this.allIds.length === 0 && !this.status"
+    >
+      Keine Votes vorhanden
+    </p>
+    <ul class="list-group" id="allIds" *ngIf="!this.status">
+      <li class="list-group-item id-list-item" *ngFor="let vote of this.allIds">
+        <div>{{ vote.VoteName }}</div>
+        <img
+          src="img_trash.png"
+          (click)="this.onDeleteVotable(vote.VoteName)"
+          alt="LÖSCHEN"
+          style="width: 15px; height: 20px"
+        />
+      </li>
+    </ul>
+  </div>
+
+  <div id="card-allCandidates" class="card">
+    <h3>All Candidates</h3>
+    <p id="noCandidates" class="errorMessage" style="display: none">
+      Keine Kandidaten vorhanden
+    </p>
+    <ul class="list-group" id="allCandidates">
+      <li
+        class="list-group-item id-list-item"
+        *ngFor="let candidate of this.candidates"
+      >
+        <div>{{ candidate }}</div>
+        <div>-</div>
+        <div>{{ this.voting[candidate] }}</div>
+        <img
+          src="img_trash.png"
+          (click)="this.onDeleteCandidates(candidate)"
+          alt="LÖSCHEN"
+          style="width: 15px; height: 20px"
+          *ngIf="candidate !== 'undefined' && !this.status"
+        />
+      </li>
+    </ul>
+  </div>
+
   <div id="deleteAllEntries" class="card">
     <h3>Database Controll</h3>
-    <form>
-      <button (click)="onDeleteAll()" class="btn-danger btn">
+    <form class="routing">
+      <button (click)="onDeleteAll()" class="routing-btn btn-danger btn">
         Alles löschen
+      </button>
+      <button (click)="onDeleteAllVotes()" class="routing-btn btn-danger btn">
+        Alle Votes löschen
       </button>
     </form>
   </div>

@@ -14,9 +14,15 @@ import { RoutingService } from '../services/routing/routing.service';
 export class DoVoteComponent implements OnInit {
   candidates:string[] = []
   id: string = ''
+  name: string = ''
 
   ngOnInit(){
+    this.updateName()
     this.syncCandidates()
+    setInterval(()=>{
+      this.updateName()
+      this.syncCandidates()
+    }, 60_000)
   }
 
   constructor(public connect: ConnectionService, public routing: RoutingService) {}
@@ -59,5 +65,10 @@ export class DoVoteComponent implements OnInit {
       }
       alert("NOTHING SELECTED")
 
+  }
+
+  async updateName(): Promise<void>{
+    this.name = (await this.connect.getName())["name"];
+    console.log(this.name)
   }
 }
